@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="mt-5">
+    <div *ngFor="let instrumento of instrumentos">
+      <div class="card">
+        <div class="row no-gutters">
+          <div class="col-md-3">
+           <a routerLink='/instrumentoDetalle/{{instrumento.id}}'>
+            {{showImage(instrumento.imagen.picByte)}}
+            <img [src]="retrievedImage" class="card-img card-img-top" alt="" width= "50%;"
+            height= "vw;"
+            object-fit= "cover;"/>
+          </a>
+          </div>
+         
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{instrumento.instrumento}}
+              </h5>
+              <h4 class="card-text">{{instrumento.precio}}</h4>
+
+              <p
+                *ngIf="this.instrumento.costoEnvio === 'G'; else conCosto"
+                class="card-text text-success"
+              >
+                <img src="assets/images/camion.png" />
+                <strong>
+                  Envio Gratis a todo el pais
+                </strong>
+              </p>
+
+              <ng-template #conCosto>
+                <p class="card-text text-warning">
+                  <strong>
+                    Costo de Envio Interior de Argentina: ${{
+                      instrumento.costoEnvio
+                    }}
+                  </strong>
+                </p>
+              </ng-template>
+
+              <p class="card-text">
+                {{instrumento.cantidadVendida }} vendidos
+                
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="mt-5">
+      <div >
+        <div class="card">
+            <br><br>
+          <div class="row no-gutters">
+              <div class="col-md-1"></div>
+                        <div class="col-md-6">
+             {{showImage(instrumento.imagen.picByte)}}
+              <img [src]="retrievedImage" class="card-img card-img-top" alt="" width= "100%;"
+              height= "400vw;"
+              object-fit= "cover;"/>
+              <br><br>
+              <h6><strong>Descripción</strong></h6>
+              <h6 class="card-text"> 
+                  {{instrumento.descripcion}}
+              </h6>
+  
+            </div>
+            <div class="col-md-5">
+              <div class="card-body">
+                  
+                <p class="card-text">
+                    {{ this.instrumento.cantidadVendida }} vendidos
+                  </p>
+                <h5 class="card-title">
+                 {{instrumento.instrumento}}
+                </h5>
+                <h4 class="card-text">${{instrumento.precio}}</h4>
+                <br>
+                <h6 class="card-text">Marca:  {{instrumento.marca}}</h6>
+                <h6 class="card-text">Modelo:  {{instrumento.modelo}}</h6>
+                <br>
+                <h6>Costo Envio</h6>
+                <p
+                  *ngIf="this.instrumento.costoEnvio === 'G'; else conCosto"
+                  class="card-text text-success"
+                >
+                  <img src="assets/images/camion.png" />
+                  <strong>
+                    Envio Gratis 
+                  </strong>
+                </p>
+  
+                <ng-template #conCosto>
+                  <p class="card-text text-warning">
+                    <strong>${{instrumento.costoEnvio}}
+                    </strong>
+                  </p>
+                </ng-template>
+                <br><br>
+                <button type="button" class="btn btn-outline-info">Agregar al carrito</button>
+  
+              </div>
+            </div>
+          </div>
+          <br><br>
+          <button type="button" class="btn btn-secondary btn-lg btn-block" routerLink='/instrumentos'>Ver todos los Productos</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
